@@ -8,14 +8,11 @@ import android.view.ViewGroup
 import com.muratcay.senyaapplication.R
 import com.muratcay.senyaapplication.databinding.FragmentHomeBinding
 
-class HomeFragment : Fragment() {
-    private val binding: FragmentHomeBinding by lazy { FragmentHomeBinding.inflate(layoutInflater) }
+class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::inflate) {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        return binding.root
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        navController.navigateUp()
     }
 
 }

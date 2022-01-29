@@ -21,7 +21,7 @@ abstract class BaseFragment<VB : ViewBinding>(
         (activity as MainActivity).navController
     }
 
-    protected val attraction: List<Attraction>
+    protected val attractions: List<Attraction>
         get() = (activity as MainActivity).attractionsList
 
     override fun onCreateView(

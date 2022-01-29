@@ -24,7 +24,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                 RecyclerView.VERTICAL
             )
         )
-        homeAdapter.setData(attraction)
+        homeAdapter.setData(attractions)
     }
 
 }

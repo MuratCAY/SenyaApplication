@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
+import com.muratcay.senyaapplication.data.Attraction
 import com.muratcay.senyaapplication.ui.MainActivity
 
 typealias Inflate<T> = (LayoutInflater, ViewGroup?, Boolean) -> T
@@ -19,6 +20,9 @@ abstract class BaseFragment<VB : ViewBinding>(
     protected val navController by lazy {
         (activity as MainActivity).navController
     }
+
+    protected val attraction: List<Attraction>
+        get() = (activity as MainActivity).attractionsList
 
     override fun onCreateView(
         inflater: LayoutInflater,

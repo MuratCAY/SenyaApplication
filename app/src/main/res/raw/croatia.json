@@ -14,7 +14,7 @@
         "latitude": "43.937887",
         "longitude": "15.163208"
       },
-      "months_to_visit": "June - September",
+      "months": "June - September",
       "facts": [
         "Largest town on the island of Dugi Otok, though it is small enough for everyone to know each other.",
         "It is a fishing village that hosts a traditional “festa” or festival every year to honor fishermen traditions, drawing in tourists from all over Europe.",
@@ -33,7 +33,7 @@
         "latitude": "45.8150",
         "longitude": "15.9819"
       },
-      "months_to_visit": "All year",
+      "months": "All year",
       "facts": [
         "The capital of Croatia",
         "The Zagreb Cathedral is the tallest building in Croatia.",
@@ -52,7 +52,7 @@
         "latitude": "44.1194",
         "longitude": "15.2314"
       },
-      "months_to_visit": "May - October",
+      "months": "May - October",
       "facts": [
         "There are many ancient ruins in this city, including a fortress wall that borders some of the city.",
         "Zadar is the site of the sea organs, which appear like regular steps into the sea, but sound like beautiful organ music due to the crashing of the waves against them.",
@@ -70,7 +70,7 @@
         "latitude": "44.8654",
         "longitude": "15.5820"
       },
-      "months_to_visit": "All year",
+      "months": "All year",
       "facts": [
         "There are 16 lakes and 90 waterfalls",
         "You can walk and hike around the waterfalls, even being able to dip your hands in at some points.",
@@ -89,7 +89,7 @@
         "latitude": "43.8707",
         "longitude": "15.2324"
       },
-      "months_to_visit": "June - September",
+      "months": "June - September",
       "facts": [
         "They are named for their triangular shaped islands and dry barren landscape",
         "Donkeys and rams can frequently be seen on the islands",
@@ -108,7 +108,7 @@
         "latitude": "42.6507",
         "longitude": "18.0944"
       },
-      "months_to_visit": "All year",
+      "months": "All year",
       "facts": [
         "Filming site of the hit series, Game of Thrones",
         "The city is surrounded by ancient walls and fortifications.",
@@ -126,7 +126,7 @@
         "latitude": "43.5081",
         "longitude": "16.4402"
       },
-      "months_to_visit": "All year",
+      "months": "All year",
       "facts": [
         "It is the largest city on the Dalmatian Coast",
         "It is home to Diocletian’s Palace."

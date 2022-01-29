@@ -32,6 +32,7 @@
         tools:src="@tools:sample/backgrounds/scenic" />
 
     <TextView
+        android:id="@+id/monthToVisitTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -45,6 +46,7 @@
         tools:text="All year" />
 
     <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/goRight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"

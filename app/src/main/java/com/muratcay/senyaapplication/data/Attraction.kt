@@ -1,4 +1,5 @@
 package com.muratcay.senyaapplication.data
+import android.net.Uri
 import com.google.gson.annotations.SerializedName
 
 data class Attraction(
@@ -12,8 +13,8 @@ data class Attraction(
     val imageUrls: List<String> = listOf(),
     @SerializedName("location")
     val location: Location = Location(),
-    @SerializedName("months_to_visit")
-    val monthsToVisit: String = "",
+    @SerializedName("months")
+    val months: String = "",
     @SerializedName("title")
     val title: String = ""
 ){

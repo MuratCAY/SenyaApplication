@@ -9,7 +9,7 @@ import com.muratcay.senyaapplication.R
 import com.muratcay.senyaapplication.data.Attraction
 import com.muratcay.senyaapplication.databinding.ViewHolderAttractionBinding
 
-class HomeFragmentAdapter(private val onClickedCallback: () -> Unit) :
+class HomeFragmentAdapter(private val onClickedCallback: (String) -> Unit) :
     RecyclerView.Adapter<HomeFragmentAdapter.AttractionViewHolder>() {
 
     private val attractions = ArrayList<Attraction>()
@@ -23,7 +23,7 @@ class HomeFragmentAdapter(private val onClickedCallback: () -> Unit) :
 
     inner class AttractionViewHolder(val itemBinding: ViewHolderAttractionBinding) :
         RecyclerView.ViewHolder(itemBinding.root) {
-        fun onBind(attraction: Attraction, onClicked: () -> Unit) {
+        fun onBind(attraction: Attraction, onClicked: (String) -> Unit) {
             //  Picasso.get().load(attraction.imageUrls).into(itemBinding.headerImageView)
             itemBinding.titleTextView.text = attraction.title
             itemBinding.monthToVisitTextView.text = attraction.months
@@ -32,7 +32,7 @@ class HomeFragmentAdapter(private val onClickedCallback: () -> Unit) :
                 .error(R.drawable.ic_launcher_background).into(itemBinding.headerImageView)
 
             itemBinding.root.setOnClickListener {
-                onClicked()
+                onClicked(attraction.id)
             }
 
         }

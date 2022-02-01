@@ -1,30 +1,26 @@
-package com.muratcay.senyaapplication.ui.fragment
+package com.muratcay.senyaapplication.ui.fragment.details
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
-import com.bumptech.glide.Glide
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearSnapHelper
 import com.muratcay.senyaapplication.R
 import com.muratcay.senyaapplication.databinding.FragmentAttractionDetailBinding
+import com.muratcay.senyaapplication.ui.fragment.BaseFragment
 
 class AttractionDetailFragment :
     BaseFragment<FragmentAttractionDetailBinding>(FragmentAttractionDetailBinding::inflate) {
-    /*
-   private val safeArgs: AttractionDetailFragmentArgs by navArgs()
-    private val attraction: Attraction by lazy {
-        attractions.find { it.id == safeArgs.attractionId }!!
-    }*/
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        dataLoad()
         setHasOptionsMenu(true)
+        dataLoad()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -45,13 +41,20 @@ class AttractionDetailFragment :
     @SuppressLint("SetTextI18n")
     private fun dataLoad() {
         activityViewModel.selectedAttractionLiveData.observe(viewLifecycleOwner) { attraction ->
-            Glide.with(requireActivity()).load(attraction.imageUrls)
-                .error(R.drawable.ic_launcher_background).into(binding.headerImageView)
             binding.apply {
                 titleTextView.text = attraction.title
+                headerEpoxyRecyclerView.layoutManager =
+                    LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
                 monthsToVisitTextView.text = attraction.months
                 numberOfFactsTextView.text = "${attraction.facts.size} facts"
                 descriptionTextView.text = attraction.description
+                binding.headerEpoxyRecyclerView.setControllerAndBuildModels(
+                    HeaderEpoxyController(
+                        attraction.url_image
+                    )
+                )
+                LinearSnapHelper().attachToRecyclerView(binding.headerEpoxyRecyclerView)
+                binding.indicator.attachToRecyclerView(binding.headerEpoxyRecyclerView)
                 numberOfFactsTextView.setOnClickListener {
                     val stringBuilder = StringBuilder("")
                     attraction.facts.forEach {
@@ -60,12 +63,11 @@ class AttractionDetailFragment :
                     val message =
                         stringBuilder.toString()
                             .substring(0, stringBuilder.toString().lastIndexOf("\n\n"))
-                    AlertDialog.Builder(requireContext())
-                        .setTitle("${attraction.title} Facts")
+                    AlertDialog.Builder(requireContext()).setTitle("${attraction.title} Facts")
                         .setMessage(message)
-                        .setPositiveButton("Ok") { dialog, which ->
+                        .setPositiveButton("Ok") { dialog, _ ->
                             dialog.dismiss()
-                        }.setNegativeButton("No!") { dialog, which ->
+                        }.setNegativeButton("No!") { dialog, _ ->
                             dialog.dismiss()
                         }.show()
                 }

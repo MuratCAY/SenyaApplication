@@ -60,4 +60,5 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
     implementation 'com.airbnb.android:epoxy:4.6.3'
     annotationProcessor 'com.airbnb.android:epoxy-processor:4.6.3'
+    implementation 'ru.tinkoff.scrollingpagerindicator:scrollingpagerindicator:1.0.6'
 }

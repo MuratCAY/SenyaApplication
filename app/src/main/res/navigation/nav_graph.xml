@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/attractionDetailFragment"
-        android:name="com.muratcay.senyaapplication.ui.fragment.AttractionDetailFragment"
+        android:name="com.muratcay.senyaapplication.ui.fragment.details.AttractionDetailFragment"
         android:label="Attraction Detail"
         tools:layout="@layout/fragment_attraction_detail"/>
 

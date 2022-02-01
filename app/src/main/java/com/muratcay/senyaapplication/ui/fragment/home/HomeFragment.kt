@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
+import com.muratcay.senyaapplication.R
 import com.muratcay.senyaapplication.databinding.FragmentHomeBinding
 import com.muratcay.senyaapplication.ui.fragment.BaseFragment
 
@@ -13,9 +14,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
         super.onViewCreated(view, savedInstanceState)
 
         val homeAdapter = HomeFragmentAdapter { attractionId ->
-            val navDirections =
-                HomeFragmentDirections.actionHomeFragmentToAttractionDetailFragment(attractionId)
-            navController.navigate(navDirections)
+            activityViewModel.onAttractionSelected(attractionId)
+            navController.navigate(R.id.action_homeFragment_to_attractionDetailFragment)
         }
         binding.recyclerView.adapter = homeAdapter
         binding.recyclerView.addItemDecoration(
@@ -24,7 +24,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
                 RecyclerView.VERTICAL
             )
         )
-        homeAdapter.setData(attractions)
+        activityViewModel.attractionListLiveData.observe(viewLifecycleOwner) { attractions ->
+            homeAdapter.setData(attractions)
+        }
+
     }
 
 }

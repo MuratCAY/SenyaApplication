@@ -21,10 +21,6 @@
         android:id="@+id/attractionDetailFragment"
         android:name="com.muratcay.senyaapplication.ui.fragment.AttractionDetailFragment"
         android:label="Attraction Detail"
-        tools:layout="@layout/fragment_attraction_detail">
-        <argument
-            android:name="attractionId"
-            app:argType="string" />
-    </fragment>
+        tools:layout="@layout/fragment_attraction_detail"/>
 
 </navigation>

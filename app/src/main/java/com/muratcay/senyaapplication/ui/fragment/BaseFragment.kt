@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
-import com.muratcay.senyaapplication.data.Attraction
+import com.muratcay.senyaapplication.arch.AttractionsViewModel
 import com.muratcay.senyaapplication.ui.MainActivity
 
 typealias Inflate<T> = (LayoutInflater, ViewGroup?, Boolean) -> T
@@ -21,8 +21,11 @@ abstract class BaseFragment<VB : ViewBinding>(
         (activity as MainActivity).navController
     }
 
-    protected val attractions: List<Attraction>
-        get() = (activity as MainActivity).attractionsList
+    /* protected val attractions: List<Attraction>
+         get() = (activity as MainActivity).attractionsList */
+
+    protected val activityViewModel: AttractionsViewModel
+        get() = (activity as MainActivity).viewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,

@@ -13,21 +13,22 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val homeAdapter = HomeFragmentAdapter { attractionId ->
+        val epoxyController = HomeFragmentController { attractionId ->
             activityViewModel.onAttractionSelected(attractionId)
             navController.navigate(R.id.action_homeFragment_to_attractionDetailFragment)
         }
-        binding.recyclerView.adapter = homeAdapter
-        binding.recyclerView.addItemDecoration(
-            DividerItemDecoration(
-                requireContext(),
-                RecyclerView.VERTICAL
+        binding.apply {
+            epoxyRecyclerView.setController(epoxyController)
+            epoxyRecyclerView.addItemDecoration(
+                DividerItemDecoration(
+                    requireContext(),
+                    RecyclerView.VERTICAL
+                )
             )
-        )
-        activityViewModel.attractionListLiveData.observe(viewLifecycleOwner) { attractions ->
-            homeAdapter.setData(attractions)
         }
-
+        epoxyController.isLoading = true
+        activityViewModel.attractionListLiveData.observe(viewLifecycleOwner) { attractions ->
+            epoxyController.attractions = attractions
+        }
     }
-
 }

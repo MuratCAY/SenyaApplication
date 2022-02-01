@@ -3,15 +3,17 @@ package com.muratcay.senyaapplication.arch
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.muratcay.senyaapplication.data.Attraction
-import org.w3c.dom.Attr
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class AttractionsViewModel : ViewModel() {
 
     private val repository = AttractionsRepository()
 
     //Home Fragment
-    val attractionListLiveData = MutableLiveData<List<Attraction>>()
+    val attractionListLiveData = MutableLiveData<ArrayList<Attraction>>()
 
     //Attraction Detail Fragment
     val selectedAttractionLiveData = MutableLiveData<Attraction>()
@@ -19,8 +21,11 @@ class AttractionsViewModel : ViewModel() {
     val locationSelectedLiveData = MutableLiveData<Attraction>()
 
     fun init(context: Context) {
-        val attractionList = repository.parseAttractions(context)
-        attractionListLiveData.value = attractionList
+        viewModelScope.launch {
+            delay(5000)
+            val attractionList = repository.parseAttractions(context)
+            attractionListLiveData.value = attractionList
+        }
     }
 
     fun onAttractionSelected(attractionId: String) {
